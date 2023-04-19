@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <p>{{ pizza.name }} {{ pizza.price }} UAN</p>
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Оберіть додаткові інгредієнти:</h2>
+            <ul>
+                {% for ing in ingredients %}
+                <li>
+                    <input type="checkbox" name="ing" value="{{ing.pk}}">{{ ing.name }} {{ ing.price }} UAN>
+                </li>
+                {% endfor %}
+            </ul>
+            {{ form.as_p }}
+            <input type="submit" value="Замовити">
+        </form> 
+        {{context}}       
+    </div>
+</body>
+</html>
